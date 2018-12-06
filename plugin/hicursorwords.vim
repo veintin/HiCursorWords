@@ -83,7 +83,11 @@ endfunction
 
 function! s:HiCursorWords__execute()
     if exists("w:HiCursorWords__matchId")
-        call matchdelete(w:HiCursorWords__matchId)
+        try
+            call matchdelete(w:HiCursorWords__matchId)
+        catch //
+        finally
+        endtry
         unlet w:HiCursorWords__matchId
     endif
 
